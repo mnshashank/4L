@@ -20,6 +20,7 @@ public class EntryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_entry);
 
         playStart = (Button) findViewById(R.id.play_start);
@@ -32,7 +33,8 @@ public class EntryActivity extends AppCompatActivity {
         if (restoredScore != null) {
             highestScoreValue.setText(restoredScore);
         } else {
-            highestLayout.setVisibility(View.INVISIBLE);
+            //highestLayout.setVisibility(View.INVISIBLE);
+            highestScoreValue.setText("0");
         }
 
         playStart.setOnClickListener(new View.OnClickListener() {
