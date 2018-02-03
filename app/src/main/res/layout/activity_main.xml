@@ -50,47 +50,64 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:id="@+id/main_grid"
+        android:background="#ffffff"
         android:visibility="gone"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <ImageButton
+            <TextView
                 android:id="@+id/top_left"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:src="@mipmap/ic_empty"
-                android:background="#ffffff"
-                android:scaleType="fitCenter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#5DADE2"
+                android:text="A"
+                android:textColor="#000000"
+                android:textSize="64sp"
+                android:padding="16dp"
+                android:layout_margin="8dp"
+                android:textStyle="bold"
                 />
-            <ImageButton
+            <TextView
                 android:id="@+id/top_right"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:src="@mipmap/ic_empty"
-                android:background="#ffffff"
-                android:scaleType="fitCenter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#5DADE2"
+                android:text="A"
+                android:textColor="#000000"
+                android:textSize="64sp"
+                android:padding="16dp"
+                android:layout_margin="8dp"
+                android:textStyle="bold"
                 />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <ImageButton
+            <TextView
                 android:id="@+id/bottom_left"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:src="@mipmap/ic_empty"
-                android:background="#ffffff"
-                android:scaleType="fitCenter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#5DADE2"
+                android:text="A"
+                android:textColor="#000000"
+                android:textSize="64sp"
+                android:padding="16dp"
+                android:layout_margin="8dp"
+                android:textStyle="bold"
                 />
-            <ImageButton
+            <TextView
                 android:id="@+id/bottom_right"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:src="@mipmap/ic_empty"
-                android:background="#ffffff"
-                android:scaleType="fitCenter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#5DADE2"
+                android:text="A"
+                android:textColor="#000000"
+                android:textSize="64sp"
+                android:padding="16dp"
+                android:layout_margin="8dp"
+                android:textStyle="bold"
                 />
         </LinearLayout>
     </LinearLayout>
@@ -102,40 +119,57 @@
         android:layout_centerHorizontal="true"
         android:paddingBottom="16dp"
         android:id="@+id/result_grid"
+        android:background="#ffffff"
         android:visibility="gone"
         >
 
-        <ImageButton
+        <TextView
             android:id="@+id/first_image"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:src="@mipmap/ic_empty"
-            android:background="#ffffff"
-            android:scaleType="fitCenter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#5DADE2"
+            android:text="A"
+            android:textColor="#000000"
+            android:textSize="64sp"
+            android:padding="16dp"
+            android:layout_margin="8dp"
+            android:textStyle="bold"
             />
-        <ImageButton
+        <TextView
             android:id="@+id/second_image"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:src="@mipmap/ic_empty"
-            android:background="#ffffff"
-            android:scaleType="fitCenter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#5DADE2"
+            android:text="A"
+            android:textColor="#000000"
+            android:textSize="64sp"
+            android:padding="16dp"
+            android:layout_margin="8dp"
+            android:textStyle="bold"
             />
-        <ImageButton
+        <TextView
             android:id="@+id/third_image"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:src="@mipmap/ic_empty"
-            android:background="#ffffff"
-            android:scaleType="fitCenter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#5DADE2"
+            android:text="A"
+            android:textColor="#000000"
+            android:textSize="64sp"
+            android:padding="16dp"
+            android:layout_margin="8dp"
+            android:textStyle="bold"
             />
-        <ImageButton
+        <TextView
             android:id="@+id/fourth_image"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:src="@mipmap/ic_empty"
-            android:background="#ffffff"
-            android:scaleType="fitCenter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#5DADE2"
+            android:text="A"
+            android:textColor="#000000"
+            android:textSize="64sp"
+            android:padding="16dp"
+            android:layout_margin="8dp"
+            android:textStyle="bold"
             />
     </LinearLayout>
 

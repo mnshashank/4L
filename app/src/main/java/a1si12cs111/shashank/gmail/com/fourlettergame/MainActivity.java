@@ -31,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
     //TODO : animations
     //TODO : redesign the initial page.
 
-    ImageButton topLeft, topRight, bottomLeft, bottomRight, firstButton, secondButton, thirdButton, fourthButton, resetButton;
+    TextView topLeft, topRight, bottomLeft, bottomRight, firstButton, secondButton, thirdButton, fourthButton;
+    ImageButton resetButton;
     TextView textView, timerText;
     String formedWord = "";
     String jsonString = "";
@@ -91,15 +92,15 @@ public class MainActivity extends AppCompatActivity {
 
         textView = (TextView) findViewById(R.id.test_text);
         timerText = (TextView) findViewById(R.id.timer_text);
-        topLeft = (ImageButton) findViewById(R.id.top_left);
+        topLeft = (TextView) findViewById(R.id.top_left);
         resetButton = (ImageButton) findViewById(R.id.reset_button);
-        topRight = (ImageButton) findViewById(R.id.top_right);
-        bottomLeft = (ImageButton) findViewById(R.id.bottom_left);
-        bottomRight = (ImageButton) findViewById(R.id.bottom_right);
-        firstButton = (ImageButton) findViewById(R.id.first_image);
-        secondButton = (ImageButton) findViewById(R.id.second_image);
-        thirdButton = (ImageButton) findViewById(R.id.third_image);
-        fourthButton = (ImageButton) findViewById(R.id.fourth_image);
+        topRight = (TextView) findViewById(R.id.top_right);
+        bottomLeft = (TextView) findViewById(R.id.bottom_left);
+        bottomRight = (TextView) findViewById(R.id.bottom_right);
+        firstButton = (TextView) findViewById(R.id.first_image);
+        secondButton = (TextView) findViewById(R.id.second_image);
+        thirdButton = (TextView) findViewById(R.id.third_image);
+        fourthButton = (TextView) findViewById(R.id.fourth_image);
         mainGrid = (LinearLayout) findViewById(R.id.main_grid);
         resultGrid = (LinearLayout) findViewById(R.id.result_grid);
 
@@ -271,12 +272,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void populateResultImages(int index, ImageView imageToShow) {
+    private void populateResultImages(int index, TextView imageToShow) {
         Character characterAtIndex = getcharacterAtIndex(index);
         formedWord+=characterAtIndex.toString();
-        imageToShow.setImageResource(R.mipmap.ic_empty);
+        imageToShow.setText("");
         imageToShow.setEnabled(false);
-        setCompleteImage(getPositionCount(true), getMipMapImage(characterAtIndex));
+        setCompleteImage(getPositionCount(true), characterAtIndex);
         if (getPositionCount(false) == 4) {
             try {
                 checkForCorrectness(jsonArray);
@@ -296,99 +297,39 @@ public class MainActivity extends AppCompatActivity {
 
         if (word.length() > 0) {
             for (int i=0; i<word.length(); i++) {
-                setImage(i+1, getMipMapImage(word.charAt(i)));
+                setImage(i+1, word.charAt(i)); //getMipMapImage(word.charAt(i))
             }
         }
     }
 
-    private void setImage(int index, int mipmapImage) {
+    private void setImage(int index, char character) {
 
 
         switch (index) {
-            case 1 : topLeft.setImageResource(mipmapImage);
+            case 1 : topLeft.setText(String.valueOf(character));
                 break;
-            case 2 : topRight.setImageResource(mipmapImage);
+            case 2 : topRight.setText(String.valueOf(character));
                 break;
-            case 3 : bottomLeft.setImageResource(mipmapImage);
+            case 3 : bottomLeft.setText(String.valueOf(character));
                 break;
-            case 4 : bottomRight.setImageResource(mipmapImage);
+            case 4 : bottomRight.setText(String.valueOf(character));
                 break;
         }
     }
 
-    private void setCompleteImage(int index, int mipmapImage) {
+    private void setCompleteImage(int index, char character) {
 
 
         switch (index) {
-            case 1 : firstButton.setImageResource(mipmapImage);
+            case 1 : firstButton.setText(String.valueOf(character));
                 break;
-            case 2 : secondButton.setImageResource(mipmapImage);
+            case 2 : secondButton.setText(String.valueOf(character));
                 break;
-            case 3 : thirdButton.setImageResource(mipmapImage);
+            case 3 : thirdButton.setText(String.valueOf(character));
                 break;
-            case 4 : fourthButton.setImageResource(mipmapImage);
+            case 4 : fourthButton.setText(String.valueOf(character));
                 break;
         }
-    }
-
-    private int getMipMapImage(Character letter) {
-        int mipMapImage = 0;
-        switch (letter) {
-            case 'A' :  mipMapImage = R.mipmap.ic_a;
-                break;
-            case 'B' : mipMapImage = R.mipmap.ic_b;
-                break;
-            case 'C' : mipMapImage = R.mipmap.ic_c;
-                break;
-            case 'D' : mipMapImage = R.mipmap.ic_d;
-                break;
-            case 'E' : mipMapImage = R.mipmap.ic_e;
-                break;
-            case 'F' : mipMapImage = R.mipmap.ic_f;
-                break;
-            case 'G' : mipMapImage = R.mipmap.ic_g;
-                break;
-            case 'H' : mipMapImage = R.mipmap.ic_h;
-                break;
-            case 'I' : mipMapImage = R.mipmap.ic_i;
-                break;
-            case 'J' : mipMapImage = R.mipmap.ic_j;
-                break;
-            case 'K' : mipMapImage = R.mipmap.ic_k;
-                break;
-            case 'L' : mipMapImage = R.mipmap.ic_l;
-                break;
-            case 'M' : mipMapImage = R.mipmap.ic_m;
-                break;
-            case 'N' : mipMapImage = R.mipmap.ic_n;
-                break;
-            case 'O' : mipMapImage = R.mipmap.ic_o;
-                break;
-            case 'P' : mipMapImage = R.mipmap.ic_p;
-                break;
-            case 'Q' : mipMapImage = R.mipmap.ic_q;
-                break;
-            case 'R' : mipMapImage = R.mipmap.ic_r;
-                break;
-            case 'S' : mipMapImage = R.mipmap.ic_s;
-                break;
-            case 'T' : mipMapImage = R.mipmap.ic_t;
-                break;
-            case 'U' : mipMapImage = R.mipmap.ic_u;
-                break;
-            case 'V' : mipMapImage = R.mipmap.ic_v;
-                break;
-            case 'W' : mipMapImage = R.mipmap.ic_w;
-                break;
-            case 'X' : mipMapImage = R.mipmap.ic_x;
-                break;
-            case 'Y' : mipMapImage = R.mipmap.ic_y;
-                break;
-            case 'Z' : mipMapImage = R.mipmap.ic_z;
-                break;
-
-        }
-         return mipMapImage;
     }
 
     private int getPositionCount(Boolean incrementOrNot) {
@@ -406,13 +347,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void clearResultImages() {
-        firstButton.setImageResource(R.mipmap.ic_empty);
+        firstButton.setText("");
         topLeft.setEnabled(true);
-        secondButton.setImageResource(R.mipmap.ic_empty);
+        secondButton.setText("");
         topRight.setEnabled(true);
-        thirdButton.setImageResource(R.mipmap.ic_empty);
+        thirdButton.setText("");
         bottomLeft.setEnabled(true);
-        fourthButton.setImageResource(R.mipmap.ic_empty);
+        fourthButton.setText("");
         bottomRight.setEnabled(true);
 
     }
