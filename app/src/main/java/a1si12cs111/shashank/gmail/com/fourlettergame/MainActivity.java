@@ -462,8 +462,7 @@ public class MainActivity extends AppCompatActivity {
             tickTimer.cancel();
             tickTimer = null;
         }
-        Intent intent = new Intent(getApplicationContext(), EntryActivity.class);
-        startActivity(intent);
+        finish();
     }
 
     @Override
