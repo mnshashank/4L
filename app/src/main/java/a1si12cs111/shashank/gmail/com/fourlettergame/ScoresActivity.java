@@ -32,6 +32,8 @@ public class ScoresActivity extends AppCompatActivity {
         String restoredScore = prefs.getString("score", null);
         if (restoredScore != null) {
             highestActual.setText(restoredScore);
+        } else {
+            highestActual.setText("0");
         }
 
         playAgainButton.setOnClickListener(new View.OnClickListener() {

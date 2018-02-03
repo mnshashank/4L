@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     //TODO : animations
     //TODO : redesign the initial page.
 
-    ImageButton topLeft, topRight, bottomLeft, bottomRight, firstButton, secondButton, thirdButton, fourthButton;
+    ImageButton topLeft, topRight, bottomLeft, bottomRight, firstButton, secondButton, thirdButton, fourthButton, resetButton;
     TextView textView, timerText;
     String formedWord = "";
     String jsonString = "";
@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
     Runnable r1,r2,r3;
     Integer score = 0;
     ArrayList<Integer> occuredRandomNumbers = new ArrayList<Integer>();
+    CountDownTimer countDownTimer, tickTimer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 mainGrid.setVisibility(View.VISIBLE);
                 textView.setVisibility(View.INVISIBLE);
+                resetButton.setVisibility(View.VISIBLE);
                 try {
                     clearResultImages();
                     loadNewWord(true);
@@ -69,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 mainGrid.setVisibility(View.VISIBLE);
                 textView.setVisibility(View.INVISIBLE);
+                resetButton.setVisibility(View.VISIBLE);
                 try {
                     clearResultImages();
                     loadNewWord(false);
@@ -88,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.test_text);
         timerText = (TextView) findViewById(R.id.timer_text);
         topLeft = (ImageButton) findViewById(R.id.top_left);
+        resetButton = (ImageButton) findViewById(R.id.reset_button);
         topRight = (ImageButton) findViewById(R.id.top_right);
         bottomLeft = (ImageButton) findViewById(R.id.bottom_left);
         bottomRight = (ImageButton) findViewById(R.id.bottom_right);
@@ -127,6 +132,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //reset wrongly keyed in letters
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                positionCounter = 0;
+                formedWord = "";
+                try {
+                    clearResultImages();
+                    loadNewWord(false);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
 
     }
 
@@ -138,9 +158,10 @@ public class MainActivity extends AppCompatActivity {
     private void gunShot() {
         mainGrid.setVisibility(View.VISIBLE);
         resultGrid.setVisibility(View.VISIBLE);
+        resetButton.setVisibility(View.VISIBLE);
 
         //TODO : change to 30 seconds later : done
-        CountDownTimer countDownTimer = new CountDownTimer(31000, 1000) {
+        countDownTimer = new CountDownTimer(31000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 timerText.setText("" + millisUntilFinished / 1000);
@@ -179,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void readySteadyGo() {
 
-        new CountDownTimer(4500, 1000) {
+        tickTimer = new CountDownTimer(4500, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 textView.setVisibility(View.VISIBLE);
@@ -407,6 +428,7 @@ public class MainActivity extends AppCompatActivity {
             //clearResultImages();
             mainGrid.setVisibility(View.INVISIBLE);
             textView.setVisibility(View.VISIBLE);
+            resetButton.setVisibility(View.INVISIBLE);
             score ++;
             handler.postDelayed(r1, 500);
             //loadNewWord(true);
@@ -418,6 +440,7 @@ public class MainActivity extends AppCompatActivity {
             //clearResultImages();
             mainGrid.setVisibility(View.INVISIBLE);
             textView.setVisibility(View.VISIBLE);
+            resetButton.setVisibility(View.INVISIBLE);
             handler.postDelayed(r2, 500);
             //loadNewWord(false);
         }
@@ -426,5 +449,25 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         // preventing from going into the entryActivity as the timer is ticking
+        if (handler != null) {
+            handler.removeCallbacks(r1);
+            handler.removeCallbacks(r2);
+            handler.removeCallbacks(r3);
+        }
+        if(countDownTimer != null) {
+            countDownTimer.cancel();
+            countDownTimer = null;
+        }
+        if(tickTimer != null) {
+            tickTimer.cancel();
+            tickTimer = null;
+        }
+        Intent intent = new Intent(getApplicationContext(), EntryActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
     }
 }

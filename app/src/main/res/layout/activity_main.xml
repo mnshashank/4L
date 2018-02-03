@@ -28,6 +28,21 @@
         android:layout_centerHorizontal="true"
         />
 
+    <ImageButton
+        android:id="@+id/reset_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/ic_autorenew_white_24dp"
+        android:scaleType="fitCenter"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:visibility="invisible"
+        android:layout_above="@+id/main_grid"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="48dp"
+        android:background="@null"
+        />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

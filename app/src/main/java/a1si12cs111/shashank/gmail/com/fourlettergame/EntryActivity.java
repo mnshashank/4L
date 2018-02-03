@@ -9,8 +9,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 public class EntryActivity extends AppCompatActivity {
 
     Button playStart;
@@ -33,7 +31,6 @@ public class EntryActivity extends AppCompatActivity {
         if (restoredScore != null) {
             highestScoreValue.setText(restoredScore);
         } else {
-            //highestLayout.setVisibility(View.INVISIBLE);
             highestScoreValue.setText("0");
         }
 
