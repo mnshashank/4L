@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     //TODO : redesign the initial page.
 
     TextView topLeft, topRight, bottomLeft, bottomRight, firstButton, secondButton, thirdButton, fourthButton;
+    int timerTick;
     ImageButton resetButton;
     TextView textView, timerText;
     String formedWord = "";
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         setContentView(R.layout.activity_main);
         handler = new Handler();
+        timerTick = 31000;
         r1 = new Runnable() {
 
             @Override
@@ -162,9 +164,10 @@ public class MainActivity extends AppCompatActivity {
         resetButton.setVisibility(View.VISIBLE);
 
         //TODO : change to 30 seconds later : done
-        countDownTimer = new CountDownTimer(31000, 1000) {
+        countDownTimer = new CountDownTimer(timerTick, 1000) {
 
             public void onTick(long millisUntilFinished) {
+                timerTick = (int) millisUntilFinished;
                 timerText.setText("" + millisUntilFinished / 1000);
                 if (millisUntilFinished / 1000 < 7) {
                     timerText.setTextColor(Color.RED);
@@ -410,5 +413,40 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        if (handler != null) {
+            handler.removeCallbacks(r1);
+            handler.removeCallbacks(r2);
+            handler.removeCallbacks(r3);
+        }
+        if(countDownTimer != null) {
+            countDownTimer.cancel();
+            countDownTimer = null;
+        }
+        if(tickTimer != null) {
+            tickTimer.cancel();
+            tickTimer = null;
+        }
+        SharedPreferences.Editor editor = getSharedPreferences("TICK", MODE_PRIVATE).edit();
+        editor.putString("tick", "true");
+        editor.apply();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences prefs = getSharedPreferences("TICK", MODE_PRIVATE);
+        String restoredScore = prefs.getString("tick", null);
+        if (restoredScore != null && restoredScore.equals("true")) {
+            gunShot();
+        }
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SharedPreferences.Editor editor = getSharedPreferences("TICK", MODE_PRIVATE).edit();
+        editor.putString("tick", "false");
+        editor.apply();
     }
 }
