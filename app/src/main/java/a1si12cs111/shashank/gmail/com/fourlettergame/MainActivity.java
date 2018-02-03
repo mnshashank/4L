@@ -189,6 +189,7 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = getSharedPreferences("HIGHESTSCORE", MODE_PRIVATE).edit();
                 editor.putString("score", updatedScore.toString());
                 editor.apply();
+                finish();
                 Intent intent = new Intent(getApplicationContext(), ScoresActivity.class);
                 intent.putExtra("score", score.toString());
                 startActivity(intent);

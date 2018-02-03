@@ -50,7 +50,8 @@ public class ScoresActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(getApplicationContext(), EntryActivity.class);
-        startActivity(intent);
+        /*Intent intent = new Intent(getApplicationContext(), EntryActivity.class);
+        startActivity(intent);*/
+        finish();
     }
 }
