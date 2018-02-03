@@ -14,8 +14,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/time_up"
         android:layout_margin="16dp"
-        android:textSize="34sp"
-        android:textColor="#7CFC00"
+        android:textSize="32sp"
+        android:textColor="#ffffff"
         android:layout_centerHorizontal="true"
         android:text="Time is up !"
         />
@@ -37,9 +37,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/score_tag"
                 android:layout_margin="16dp"
-                android:textSize="34sp"
-                android:textColor="#7CFC00"
-                android:layout_centerHorizontal="true"
+                android:textSize="24sp"
+                android:textColor="#ffffff"
                 android:text="Score"
                 />
             <TextView
@@ -47,9 +46,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/score_actual"
                 android:layout_margin="16dp"
-                android:textSize="34sp"
-                android:textColor="#7CFC00"
-                android:layout_centerHorizontal="true"
+                android:textSize="24sp"
+                android:textColor="#ffffff"
                 android:layout_gravity="center"
                 />
         </LinearLayout>
@@ -63,9 +61,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/highest_tag"
                 android:layout_margin="16dp"
-                android:textSize="34sp"
-                android:textColor="#7CFC00"
-                android:layout_centerHorizontal="true"
+                android:textSize="24sp"
+                android:textColor="#ffffff"
                 android:text="Highest"
                 />
             <TextView
@@ -73,9 +70,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/highest_actual"
                 android:layout_margin="16dp"
-                android:textSize="34sp"
-                android:textColor="#7CFC00"
-                android:layout_centerHorizontal="true"
+                android:textSize="24sp"
+                android:textColor="#ffffff"
                 android:layout_gravity="center"
                 />
         </LinearLayout>
@@ -85,13 +81,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/play_again"
-        android:layout_centerHorizontal="true"
-        android:src="@mipmap/ic_launcher_round"
         android:layout_alignParentBottom="true"
-        android:layout_margin="32dp"
-        android:text="Play Again.."
+        android:text="Play Again"
         android:background="@color/colorAccent"
         android:textColor="#ffffff"
+        android:padding="16dp"
+        android:textSize="24sp"
         />
 
 
