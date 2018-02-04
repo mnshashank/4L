@@ -54,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         handler = new Handler();
         timerTick = 31000;
+        SharedPreferences.Editor editor = getSharedPreferences("TICK", MODE_PRIVATE).edit();
+        editor.putString("tick", "false");
+        editor.apply();
         r1 = new Runnable() {
 
             @Override
@@ -449,4 +452,12 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("tick", "false");
         editor.apply();
     }
+
+    /*@Override
+    protected void onStop() {
+        super.onStop();
+        SharedPreferences.Editor editor = getSharedPreferences("TICK", MODE_PRIVATE).edit();
+        editor.putString("tick", "false");
+        editor.apply();
+    }*/
 }
